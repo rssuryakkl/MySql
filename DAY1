@@ -1,0 +1,18 @@
+Hiii all This is DAY1 Of  STRUCTURED  QUERY LANGUAGE (SQL).
+Creating Database:
+To create a database, type the following command in the prompt:
+ CREATE  DATABASE database_name;
+ For example to create a database to store the tables:
+ CREATE  DATABASE stud;
+ To work with the database, type the following command.
+ USE DATABASE;
+ For example to use the stud database created, give the command 
+ USE  stud;
+
+Components of SQL:
+
+1. DATA DEFINITION LANGUAGE(DDL):Create,Alter,Drop,Truncate.
+2. DATA MANIPULATION LANGUAGE(DML):Insert,Update,Delete.
+3. DATA CONTROL LANGUAGE(DCL):Grant,Revoke.
+4. TRANSACTIONAL CONTROL LANGUAGE(TCL):Commit,Roll Back,Save Point.
+5. DATA QUERY LANGUAGE(DQL):Select.
