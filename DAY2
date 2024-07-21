@@ -1,0 +1,8 @@
+DAY2
+ SQL Commands and their Functions 
+ Tables are the only way to store data, therefore all the information has to be arranged in 
+the form of tables. The SQL provides a predetermined set of commands to work on databases. 
+Keywords :They have a special meaning in SQL. They are understood as instructions.
+ Commands:They are instructions given by the user to the database also known as 
+statements.
+ Clauses :They begin with a keyword and consist of keyword and argument
