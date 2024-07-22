@@ -1,0 +1,64 @@
+mysql> # Hii all this is DAY3(22-07-2024) of SQL Learning. Today's topic is DDL Commands.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create database stud;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use database;
+ERROR 1049 (42000): Unknown database 'database'
+
+mysql> use stud;
+Database changed
+
+mysql> create table ss(Admno integer,Name char(30),Gender char(1),Age integer,Location char (50));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into ss(Admno,Name,Gender,Age,Location)values(1001,'Surya','M',20,'Chennai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into ss(Admno,Name,Gender,Age,Location)values(1003,'Mani','M',23,'Villupuram');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ss(Admno,Name,Gender,Age,Location)values(1002,'kani','F',22,'Villupuram');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ss(Admno,Name,Gender,Age,Location)values(1005,'Ravi','M',54,'Kumbakonam'),(1004,'Suresh','M',44,'Chennai');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> Select * From ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1002 | kani   | F      |   22 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Select* from ss where 'Gender'='F';
+Empty set (0.01 sec)
+
+mysql> Select * From ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1002 | kani   | F      |   22 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Select from ss where Admno=1002;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from ss where Admno=1002' at line 1
+mysql> Select Admno,Name from ss where Admno=1002;
++-------+------+
+| Admno | Name |
++-------+------+
+|  1002 | kani |
++-------+------+
+1 row in set (0.01 sec)
