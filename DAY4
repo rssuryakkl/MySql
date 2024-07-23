@@ -1,0 +1,103 @@
+mysql> #Hii All This is DAY4(23-07-2024) of SQL Learning. Today's topic is DELETE COMMAND.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> use stud;
+Database changed
+mysql> select * from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.01 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_stud |
++----------------+
+| ss             |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> insert into ss values(1007,'Prassanakiruba','F',28,'Coimbatore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ss values(1002,'Kani','F',30,'Chennai');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ss;
++-------+----------------+--------+------+------------+
+| Admno | Name           | Gender | Age  | Location   |
++-------+----------------+--------+------+------------+
+|  1001 | Surya          | M      |   20 | Chennai    |
+|  1003 | Mani           | M      |   23 | Villupuram |
+|  1007 | Prassanakiruba | F      |   28 | Coimbatore |
+|  1005 | Ravi           | M      |   54 | Kumbakonam |
+|  1004 | Suresh         | M      |   44 | Chennai    |
+|  1006 | Giri           | M      |   18 | Ooty       |
+|  1002 | Kani           | F      |   30 | Chennai    |
++-------+----------------+--------+------+------------+
+7 rows in set (0.00 sec)
+
+mysql> delete from ss where Admno=1007;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
+|  1002 | Kani   | F      |   30 | Chennai    |
++-------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from ss where Admno=1002;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql>exit
+
