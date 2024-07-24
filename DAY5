@@ -1,0 +1,141 @@
+mysql> #Hii All This is DAY5(24-07-2024) of SQL Learning. Today's topic is UPDATE COMMAND.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.11 sec)
+
+mysql> use stud;
+Database changed
+mysql> show tables
+    -> show tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show tables' at line 2
+mysql> show tables;
++----------------+
+| Tables_in_stud |
++----------------+
+| ss             |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> select*from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Ravi   | M      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.01 sec)
+
+mysql> update ss set gender='F',Name='Kani' where Admno=1005;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Kani   | F      |   54 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> update ss set Age=53 where Admno=1005;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Kani   | F      |   53 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> update ss set Age=23 where Admno=1005;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Kani   | F      |   23 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
++-------+--------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into ss values(1008,'Prem','M',22,'Cuddlore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from ss;
++-------+--------+--------+------+------------+
+| Admno | Name   | Gender | Age  | Location   |
++-------+--------+--------+------+------------+
+|  1001 | Surya  | M      |   20 | Chennai    |
+|  1003 | Mani   | M      |   23 | Villupuram |
+|  1005 | Kani   | F      |   23 | Kumbakonam |
+|  1004 | Suresh | M      |   44 | Chennai    |
+|  1006 | Giri   | M      |   18 | Ooty       |
+|  1008 | Prem   | M      |   22 | Cuddlore   |
++-------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update ss set gender='F',Name='Girisha' where Admno=1006;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1003 | Mani    | M      |   23 | Villupuram |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
++-------+---------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from ss Where Location='Villupuram';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
++-------+---------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> exit;
