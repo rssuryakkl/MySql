@@ -1,0 +1,107 @@
+mysql> ##Hii All This is DAY6(26-07-2024) of SQL Learning. Today's topic is ALTER COMMAND.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> #ALTER COMMAND.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.04 sec)
+
+mysql> use stud;
+Database changed
+mysql> select * From stud;
+ERROR 1146 (42S02): Table 'stud.stud' doesn't exist
+mysql> select * From ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
++-------+---------+--------+------+------------+
+5 rows in set (0.02 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_stud |
++----------------+
+| ss             |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> alter table ss add pincode;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table stud add pincode int;
+ERROR 1146 (42S02): Table 'stud.stud' doesn't exist
+mysql> alter table ss add pincode integer;
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++----------------+
+| Tables_in_stud |
++----------------+
+| ss             |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select * From ss;
++-------+---------+--------+------+------------+---------+
+| Admno | Name    | Gender | Age  | Location   | pincode |
++-------+---------+--------+------+------------+---------+
+|  1001 | Surya   | M      |   20 | Chennai    |    NULL |
+|  1005 | Kani    | F      |   23 | Kumbakonam |    NULL |
+|  1004 | Suresh  | M      |   44 | Chennai    |    NULL |
+|  1006 | Girisha | F      |   18 | Ooty       |    NULL |
+|  1008 | Prem    | M      |   22 | Cuddlore   |    NULL |
++-------+---------+--------+------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> insert into ss (pincode)values(607505);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * From ss;
++-------+---------+--------+------+------------+---------+
+| Admno | Name    | Gender | Age  | Location   | pincode |
++-------+---------+--------+------+------------+---------+
+|  1001 | Surya   | M      |   20 | Chennai    |    NULL |
+|  1005 | Kani    | F      |   23 | Kumbakonam |    NULL |
+|  1004 | Suresh  | M      |   44 | Chennai    |    NULL |
+|  1006 | Girisha | F      |   18 | Ooty       |    NULL |
+|  1008 | Prem    | M      |   22 | Cuddlore   |    NULL |
+|  NULL | NULL    | NULL   | NULL | NULL       |  607505 |
++-------+---------+--------+------+------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into ss (pincode)values(607505)where Admno=1001;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where Admno=1001' at line 1
+mysql> alter table ss drop column pincode;
+Query OK, 6 rows affected (0.03 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * From ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
+|  NULL | NULL    | NULL   | NULL | NULL       |
++-------+---------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> quit;
