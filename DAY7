@@ -1,0 +1,155 @@
+mysql> #Hii All This is DAY7(26-07-2024) of SQL Learning. Today's topic is TRUNCATE command.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.04 sec)
+
+mysql> use stud;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_stud |
++----------------+
+| ss             |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select * from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
+|  NULL | NULL    | NULL   | NULL | NULL       |
++-------+---------+--------+------+------------+
+6 rows in set (0.01 sec)
+
+mysql> insert into ss values(1011,Ganesh,M,15,Chidambaram);
+ERROR 1054 (42S22): Unknown column 'Ganesh' in 'field list'
+mysql> insert into ss values(1011,'Ganesh','M',15,'Chidambaram');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ss;
++-------+---------+--------+------+-------------+
+| Admno | Name    | Gender | Age  | Location    |
++-------+---------+--------+------+-------------+
+|  1001 | Surya   | M      |   20 | Chennai     |
+|  1005 | Kani    | F      |   23 | Kumbakonam  |
+|  1004 | Suresh  | M      |   44 | Chennai     |
+|  1006 | Girisha | F      |   18 | Ooty        |
+|  1008 | Prem    | M      |   22 | Cuddlore    |
+|  NULL | NULL    | NULL   | NULL | NULL        |
+|  1011 | Ganesh  | M      |   15 | Chidambaram |
++-------+---------+--------+------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> delete from ss where admno=1011;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
+|  NULL | NULL    | NULL   | NULL | NULL       |
++-------+---------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from ss where admno=;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delete from ss where admno='NULL';
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> select * from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Girisha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
+|  NULL | NULL    | NULL   | NULL | NULL       |
++-------+---------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update table ss set name='Techsha' where admno=1006;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table ss set name='Techsha' where admno=1006' at line 1
+mysql> update name='Techsha' where admno=1006;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='Techsha' where admno=1006' at line 1
+mysql> update stud set name='Techsha' where admno=1006;
+ERROR 1146 (42S02): Table 'stud.stud' doesn't exist
+mysql> update ss set name='Techsha' where admno=1006;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | Techsha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
+|  NULL | NULL    | NULL   | NULL | NULL       |
++-------+---------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update table ss set name='Shaasha' where admno=1006;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table ss set name='Shaasha' where admno=1006' at line 1
+mysql> update ss set name='shaasha' where admno=1006;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from ss;
++-------+---------+--------+------+------------+
+| Admno | Name    | Gender | Age  | Location   |
++-------+---------+--------+------+------------+
+|  1001 | Surya   | M      |   20 | Chennai    |
+|  1005 | Kani    | F      |   23 | Kumbakonam |
+|  1004 | Suresh  | M      |   44 | Chennai    |
+|  1006 | shaasha | F      |   18 | Ooty       |
+|  1008 | Prem    | M      |   22 | Cuddlore   |
+|  NULL | NULL    | NULL   | NULL | NULL       |
++-------+---------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> truncate table ss;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from ss;
+Empty set (0.01 sec)
+
+mysql> show ss;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ss' at line 1
+mysql> select * from ss;
+Empty set (0.00 sec)
+
+mysql> truncate table ss;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> truncate table ss;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from ss;
+Empty set (0.00 sec)
+
+mysql> quit;
