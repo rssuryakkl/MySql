@@ -1,0 +1,99 @@
+
+mysql> ##Hii All This is DAY8(27-07-2024) of SQL Learning. Today's topic is  DROP TABLE command.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> use stud;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_stud |
++----------------+
+| ss             |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> show stud;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'stud' at line 1
+mysql> select * from ss;
+Empty set (0.00 sec)
+
+mysql> show ss;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ss' at line 1
+mysql> insert into ss values(100,'Ann','M',20,'Chennai');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ss;
++-------+------+--------+------+----------+
+| Admno | Name | Gender | Age  | Location |
++-------+------+--------+------+----------+
+|   100 | Ann  | M      |   20 | Chennai  |
++-------+------+--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into ss values(101,'sha','F',14,'Chengalpattu');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ss;
++-------+------+--------+------+--------------+
+| Admno | Name | Gender | Age  | Location     |
++-------+------+--------+------+--------------+
+|   100 | Ann  | M      |   20 | Chennai      |
+|   101 | sha  | F      |   14 | Chengalpattu |
++-------+------+--------+------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> update ss set name='madhu' where admno=101;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from ss;
++-------+-------+--------+------+--------------+
+| Admno | Name  | Gender | Age  | Location     |
++-------+-------+--------+------+--------------+
+|   100 | Ann   | M      |   20 | Chennai      |
+|   101 | madhu | F      |   14 | Chengalpattu |
++-------+-------+--------+------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table ss;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from ss;
+ERROR 1146 (42S02): Table 'stud.ss' doesn't exist
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use stud;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> ##Hii All This is DAY8(27-07-2024) of SQL Learning. Today's topic is  DROP TABLE command.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> quit;
+
+
