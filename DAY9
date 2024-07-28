@@ -1,0 +1,209 @@
+
+mysql> #Hii All This is DAY9(28-07-2024) of SQL Learning. Today's topic is  DQL COMMAND- SELECT command.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| sys                |
++--------------------+
+6 rows in set (0.02 sec)
+
+mysql> create table school(AdmNo integer,Name char(30),Gender Char(1),Age integer,Place Char(20));
+ERROR 1046 (3D000): No database selected
+mysql> create database Students
+    -> create database Students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create database Students' at line 2
+mysql> create database Students;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use students;
+Database changed
+mysql> create table school(AdmNo integer,Name char(30),Gender Char(1),Age integer,Place Char(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
++--------------------+
+1 row in set (0.02 sec)
+
+mysql> use school;
+ERROR 1049 (42000): Unknown database 'school'
+mysql>
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (100,'Aadhi','M',17,'Salem');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> Select *From school;
++-------+-------+--------+------+-------+
+| AdmNo | Name  | Gender | Age  | Place |
++-------+-------+--------+------+-------+
+|   100 | Aadhi | M      |   17 | Salem |
++-------+-------+--------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (102,'Balaji','M',12,'Trichy');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (106,'Hema','F',22,'Chennai');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (103,'Dharani','M',19,'Salem');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (104,'Dhayya','F',20,'Chengalpattu');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (101,'Prakash','M',19,'Thoothukudi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (105,'Melon','F',20,'Salem');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * From school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
++-------+---------+--------+------+--------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (107,'Ayush','M',14,'Delhi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (108,'Ahish','M',18,'Delhi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into school (Admno,Name,Gender,Age,Place) values (109,'Aisha','F',16,'NewDelhi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * From school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> Select Admno,Name from school;
++-------+---------+
+| Admno | Name    |
++-------+---------+
+|   100 | Aadhi   |
+|   102 | Balaji  |
+|   106 | Hema    |
+|   103 | Dharani |
+|   104 | Dhayya  |
+|   101 | Prakash |
+|   105 | Melon   |
+|   107 | Ayush   |
+|   108 | Ahish   |
+|   109 | Aisha   |
++-------+---------+
+10 rows in set (0.00 sec)
+
+mysql> Select Admno,Name,place from school;
++-------+---------+--------------+
+| Admno | Name    | place        |
++-------+---------+--------------+
+|   100 | Aadhi   | Salem        |
+|   102 | Balaji  | Trichy       |
+|   106 | Hema    | Chennai      |
+|   103 | Dharani | Salem        |
+|   104 | Dhayya  | Chengalpattu |
+|   101 | Prakash | Thoothukudi  |
+|   105 | Melon   | Salem        |
+|   107 | Ayush   | Delhi        |
+|   108 | Ahish   | Delhi        |
+|   109 | Aisha   | NewDelhi     |
++-------+---------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> Select Admno from school;
++-------+
+| Admno |
++-------+
+|   100 |
+|   102 |
+|   106 |
+|   103 |
+|   104 |
+|   101 |
+|   105 |
+|   107 |
+|   108 |
+|   109 |
++-------+
+10 rows in set (0.00 sec)
+
+mysql> select * From school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> quit;
