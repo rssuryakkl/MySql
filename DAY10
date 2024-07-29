@@ -1,0 +1,132 @@
+mysql> # Hii All This is DAY10(29-07-2024) of SQL Learning. Today's topic is DISTINCT Keyword.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.04 sec)
+
+mysql> use students;
+Database changed
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.02 sec)
+
+mysql> select Name from school;
++---------+
+| Name    |
++---------+
+| Aadhi   |
+| Balaji  |
+| Hema    |
+| Dharani |
+| Dhayya  |
+| Prakash |
+| Melon   |
+| Ayush   |
+| Ahish   |
+| Aisha   |
++---------+
+10 rows in set (0.00 sec)
+
+mysql> select Name,age,place from school;
++---------+------+--------------+
+| Name    | age  | place        |
++---------+------+--------------+
+| Aadhi   |   17 | Salem        |
+| Balaji  |   12 | Trichy       |
+| Hema    |   22 | Chennai      |
+| Dharani |   19 | Salem        |
+| Dhayya  |   20 | Chengalpattu |
+| Prakash |   19 | Thoothukudi  |
+| Melon   |   20 | Salem        |
+| Ayush   |   14 | Delhi        |
+| Ahish   |   18 | Delhi        |
+| Aisha   |   16 | NewDelhi     |
++---------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> # T
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> #The DISTINCT keyword is used along with the SELECT command to eliminate duplicate rows in the table. This helps to eliminate redundant data.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select distinct place from school;
++--------------+
+| place        |
++--------------+
+| Salem        |
+| Trichy       |
+| Chennai      |
+| Chengalpattu |
+| Thoothukudi  |
+| Delhi        |
+| NewDelhi     |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> select distinct age from school;
++------+
+| age  |
++------+
+|   17 |
+|   12 |
+|   22 |
+|   19 |
+|   20 |
+|   14 |
+|   18 |
+|   16 |
++------+
+8 rows in set (0.00 sec)
+
+mysql> select distinct age,place from school;
++------+--------------+
+| age  | place        |
++------+--------------+
+|   17 | Salem        |
+|   12 | Trichy       |
+|   22 | Chennai      |
+|   19 | Salem        |
+|   20 | Chengalpattu |
+|   19 | Thoothukudi  |
+|   20 | Salem        |
+|   14 | Delhi        |
+|   18 | Delhi        |
+|   16 | NewDelhi     |
++------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select distinct Gender from school;
++--------+
+| Gender |
++--------+
+| M      |
+| F      |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> quit;
