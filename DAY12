@@ -1,0 +1,208 @@
+mysql> # Hii All This is DAY12(31-07-2024) of SQL Learning. Today's topic is BETWEEN and NOT BETWEEN Keywords.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.03 sec)
+
+mysql> use students;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select*from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.01 sec)
+
+mysql> select all name from school;
++---------+
+| name    |
++---------+
+| Aadhi   |
+| Balaji  |
+| Hema    |
+| Dharani |
+| Dhayya  |
+| Prakash |
+| Melon   |
+| Ayush   |
+| Ahish   |
+| Aisha   |
++---------+
+10 rows in set (0.00 sec)
+
+mysql> select name,age from school where age<=18;
++--------+------+
+| name   | age  |
++--------+------+
+| Aadhi  |   17 |
+| Balaji |   12 |
+| Ayush  |   14 |
+| Ahish  |   18 |
+| Aisha  |   16 |
++--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select name,age from school where age<18;
++--------+------+
+| name   | age  |
++--------+------+
+| Aadhi  |   17 |
+| Balaji |   12 |
+| Ayush  |   14 |
+| Aisha  |   16 |
++--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select all name,age from school where age<=18;
++--------+------+
+| name   | age  |
++--------+------+
+| Aadhi  |   17 |
+| Balaji |   12 |
+| Ayush  |   14 |
+| Ahish  |   18 |
+| Aisha  |   16 |
++--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select all name,age,Admno from school where Not place='Chennai';
++---------+------+-------+
+| name    | age  | Admno |
++---------+------+-------+
+| Aadhi   |   17 |   100 |
+| Balaji  |   12 |   102 |
+| Dharani |   19 |   103 |
+| Dhayya  |   20 |   104 |
+| Prakash |   19 |   101 |
+| Melon   |   20 |   105 |
+| Ayush   |   14 |   107 |
+| Ahish   |   18 |   108 |
+| Aisha   |   16 |   109 |
++---------+------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select all name,place,Admno from school where Not place='Chennai';
++---------+--------------+-------+
+| name    | place        | Admno |
++---------+--------------+-------+
+| Aadhi   | Salem        |   100 |
+| Balaji  | Trichy       |   102 |
+| Dharani | Salem        |   103 |
+| Dhayya  | Chengalpattu |   104 |
+| Prakash | Thoothukudi  |   101 |
+| Melon   | Salem        |   105 |
+| Ayush   | Delhi        |   107 |
+| Ahish   | Delhi        |   108 |
+| Aisha   | NewDelhi     |   109 |
++---------+--------------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select*from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select name,age from school where age between 18 and 19;
++---------+------+
+| name    | age  |
++---------+------+
+| Dharani |   19 |
+| Prakash |   19 |
+| Ahish   |   18 |
++---------+------+
+3 rows in set (0.00 sec)
+
+mysql> select name,age from school where age not between 18 and 19;
++--------+------+
+| name   | age  |
++--------+------+
+| Aadhi  |   17 |
+| Balaji |   12 |
+| Hema   |   22 |
+| Dhayya |   20 |
+| Melon  |   20 |
+| Ayush  |   14 |
+| Aisha  |   16 |
++--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select name,age from school where age not between 18 and 20;
++--------+------+
+| name   | age  |
++--------+------+
+| Aadhi  |   17 |
+| Balaji |   12 |
+| Hema   |   22 |
+| Ayush  |   14 |
+| Aisha  |   16 |
++--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select name,age from school where age between 18 and 20;
++---------+------+
+| name    | age  |
++---------+------+
+| Dharani |   19 |
+| Dhayya  |   20 |
+| Prakash |   19 |
+| Melon   |   20 |
+| Ahish   |   18 |
++---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select Admno,name,age from school where age between 18 and 20;
++-------+---------+------+
+| Admno | name    | age  |
++-------+---------+------+
+|   103 | Dharani |   19 |
+|   104 | Dhayya  |   20 |
+|   101 | Prakash |   19 |
+|   105 | Melon   |   20 |
+|   108 | Ahish   |   18 |
++-------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> quit;
+
+
