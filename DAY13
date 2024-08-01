@@ -1,0 +1,263 @@
+mysql> #Hii All This is DAY13(01-08-2024) of SQL Learning. Today's topic is IN Keyword.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.04 sec)
+
+mysql> use students;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.02 sec)
+
+mysql> select all from school;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from school' at line 1
+mysql> select all* from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> insert into school values(111,'Kavin','M','36','Erode');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select all* from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where age=>35;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=>35' at line 1
+mysql> select admno,Name,gender,age,place from school where age>=35;
++-------+-------+--------+------+-------+
+| admno | Name  | gender | age  | place |
++-------+-------+--------+------+-------+
+|   111 | Kavin | M      |   36 | Erode |
++-------+-------+--------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where age<=35;
++-------+---------+--------+------+--------------+
+| admno | Name    | gender | age  | place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where admno between 104 and 111;
++-------+--------+--------+------+--------------+
+| admno | Name   | gender | age  | place        |
++-------+--------+--------+------+--------------+
+|   106 | Hema   | F      |   22 | Chennai      |
+|   104 | Dhayya | F      |   20 | Chengalpattu |
+|   105 | Melon  | F      |   20 | Salem        |
+|   107 | Ayush  | M      |   14 | Delhi        |
+|   108 | Ahish  | M      |   18 | Delhi        |
+|   109 | Aisha  | F      |   16 | NewDelhi     |
+|   111 | Kavin  | M      |   36 | Erode        |
++-------+--------+--------+------+--------------+
+7 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where admno not between 104 and 111;
++-------+---------+--------+------+-------------+
+| admno | Name    | gender | age  | place       |
++-------+---------+--------+------+-------------+
+|   100 | Aadhi   | M      |   17 | Salem       |
+|   102 | Balaji  | M      |   12 | Trichy      |
+|   103 | Dharani | M      |   19 | Salem       |
+|   101 | Prakash | M      |   19 | Thoothukudi |
++-------+---------+--------+------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> #IN Keyword;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place in(chennai,salem);
+ERROR 1054 (42S22): Unknown column 'chennai' in 'where clause'
+mysql> select admno,Name,gender,age,place from school where place in('chennai','salem');
++-------+---------+--------+------+---------+
+| admno | Name    | gender | age  | place   |
++-------+---------+--------+------+---------+
+|   100 | Aadhi   | M      |   17 | Salem   |
+|   106 | Hema    | F      |   22 | Chennai |
+|   103 | Dharani | M      |   19 | Salem   |
+|   105 | Melon   | F      |   20 | Salem   |
++-------+---------+--------+------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place in('chennai','Delhi');
++-------+-------+--------+------+---------+
+| admno | Name  | gender | age  | place   |
++-------+-------+--------+------+---------+
+|   106 | Hema  | F      |   22 | Chennai |
+|   107 | Ayush | M      |   14 | Delhi   |
+|   108 | Ahish | M      |   18 | Delhi   |
++-------+-------+--------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place in('NewDelhi');
++-------+-------+--------+------+----------+
+| admno | Name  | gender | age  | place    |
++-------+-------+--------+------+----------+
+|   109 | Aisha | F      |   16 | NewDelhi |
++-------+-------+--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place Not in('NewDelhi');
++-------+---------+--------+------+--------------+
+| admno | Name    | gender | age  | place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place notin('chennai','Delhi');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notin('chennai','Delhi')' at line 1
+mysql> select admno,Name,gender,age,place from school where place not in('chennai','Delhi');
++-------+---------+--------+------+--------------+
+| admno | Name    | gender | age  | place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select *from school where age is null;
+Empty set (0.00 sec)
+
+mysql> select all* from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where admno not between 104 and 111;
++-------+---------+--------+------+-------------+
+| admno | Name    | gender | age  | place       |
++-------+---------+--------+------+-------------+
+|   100 | Aadhi   | M      |   17 | Salem       |
+|   102 | Balaji  | M      |   12 | Trichy      |
+|   103 | Dharani | M      |   19 | Salem       |
+|   101 | Prakash | M      |   19 | Thoothukudi |
++-------+---------+--------+------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place in('NewDelhi');
++-------+-------+--------+------+----------+
+| admno | Name  | gender | age  | place    |
++-------+-------+--------+------+----------+
+|   109 | Aisha | F      |   16 | NewDelhi |
++-------+-------+--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select admno,Name,gender,age,place from school where place Not in('NewDelhi');
++-------+---------+--------+------+--------------+
+| admno | Name    | gender | age  | place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> quit;
+
