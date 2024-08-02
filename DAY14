@@ -1,0 +1,271 @@
+mysql> #Hii All This is DAY14(02-08-2024) of SQL Learning. Today's topic is ORDER BY clause.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.05 sec)
+
+mysql> use students;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.01 sec)
+
+mysql> select Admno,Name from school;
++-------+---------+
+| Admno | Name    |
++-------+---------+
+|   100 | Aadhi   |
+|   102 | Balaji  |
+|   106 | Hema    |
+|   103 | Dharani |
+|   104 | Dhayya  |
+|   101 | Prakash |
+|   105 | Melon   |
+|   107 | Ayush   |
+|   108 | Ahish   |
+|   109 | Aisha   |
+|   111 | Kavin   |
++-------+---------+
+11 rows in set (0.00 sec)
+
+mysql> select distinct place from school;
++--------------+
+| place        |
++--------------+
+| Salem        |
+| Trichy       |
+| Chennai      |
+| Chengalpattu |
+| Thoothukudi  |
+| Delhi        |
+| NewDelhi     |
+| Erode        |
++--------------+
+8 rows in set (0.00 sec)
+
+mysql> select distinct name, place from school;
++---------+--------------+
+| name    | place        |
++---------+--------------+
+| Aadhi   | Salem        |
+| Balaji  | Trichy       |
+| Hema    | Chennai      |
+| Dharani | Salem        |
+| Dhayya  | Chengalpattu |
+| Prakash | Thoothukudi  |
+| Melon   | Salem        |
+| Ayush   | Delhi        |
+| Ahish   | Delhi        |
+| Aisha   | NewDelhi     |
+| Kavin   | Erode        |
++---------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select distinct place,name from school;
++--------------+---------+
+| place        | name    |
++--------------+---------+
+| Salem        | Aadhi   |
+| Trichy       | Balaji  |
+| Chennai      | Hema    |
+| Salem        | Dharani |
+| Chengalpattu | Dhayya  |
+| Thoothukudi  | Prakash |
+| Salem        | Melon   |
+| Delhi        | Ayush   |
+| Delhi        | Ahish   |
+| NewDelhi     | Aisha   |
+| Erode        | Kavin   |
++--------------+---------+
+11 rows in set (0.00 sec)
+
+mysql> select all place,name from school;
++--------------+---------+
+| place        | name    |
++--------------+---------+
+| Salem        | Aadhi   |
+| Trichy       | Balaji  |
+| Chennai      | Hema    |
+| Salem        | Dharani |
+| Chengalpattu | Dhayya  |
+| Thoothukudi  | Prakash |
+| Salem        | Melon   |
+| Delhi        | Ayush   |
+| Delhi        | Ahish   |
+| NewDelhi     | Aisha   |
+| Erode        | Kavin   |
++--------------+---------+
+11 rows in set (0.00 sec)
+
+mysql> select admno,name,age from school where age between 10 and 20;
++-------+---------+------+
+| admno | name    | age  |
++-------+---------+------+
+|   100 | Aadhi   |   17 |
+|   102 | Balaji  |   12 |
+|   103 | Dharani |   19 |
+|   104 | Dhayya  |   20 |
+|   101 | Prakash |   19 |
+|   105 | Melon   |   20 |
+|   107 | Ayush   |   14 |
+|   108 | Ahish   |   18 |
+|   109 | Aisha   |   16 |
++-------+---------+------+
+9 rows in set (0.00 sec)
+
+mysql> select admno,name,age from school where age not between 10 and 20;
++-------+-------+------+
+| admno | name  | age  |
++-------+-------+------+
+|   106 | Hema  |   22 |
+|   111 | Kavin |   36 |
++-------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from school order by ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select * from school order by name;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   111 | Kavin   | M      |   36 | Erode        |
+|   105 | Melon   | F      |   20 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from school order by admno;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   105 | Melon   | F      |   20 | Salem        |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from school order by gender;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   106 | Hema    | F      |   22 | Chennai      |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   105 | Melon   | F      |   20 | Salem        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from school order by place;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   111 | Kavin   | M      |   36 | Erode        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   103 | Dharani | M      |   19 | Salem        |
+|   105 | Melon   | F      |   20 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   102 | Balaji  | M      |   12 | Trichy       |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from school order by age;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   103 | Dharani | M      |   19 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   105 | Melon   | F      |   20 | Salem        |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> #T
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> quit;
