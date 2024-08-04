@@ -1,0 +1,236 @@
+mysql> #Hii All This is DAY16(04-08-2024) of SQL Learning. Today's topic is GROUP BY clause.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> use students;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from scahool;
+ERROR 1146 (42S02): Table 'students.scahool' doesn't exist
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   111 | Kavin   | M      |   36 | Erode        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select all from school;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from school' at line 1
+mysql> select all Name from school;
++---------+
+| Name    |
++---------+
+| Aadhi   |
+| Balaji  |
+| Hema    |
+| Dharani |
+| Dhayya  |
+| Prakash |
+| Melon   |
+| Ayush   |
+| Ahish   |
+| Aisha   |
+| Kavin   |
++---------+
+11 rows in set (0.00 sec)
+
+mysql> select Admno,Name,Age from school where Age<=18;
++-------+--------+------+
+| Admno | Name   | Age  |
++-------+--------+------+
+|   100 | Aadhi  |   17 |
+|   102 | Balaji |   12 |
+|   107 | Ayush  |   14 |
+|   108 | Ahish  |   18 |
+|   109 | Aisha  |   16 |
++-------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select Admno,Name,Age from school where Age between 10 and 15;
++-------+--------+------+
+| Admno | Name   | Age  |
++-------+--------+------+
+|   102 | Balaji |   12 |
+|   107 | Ayush  |   14 |
++-------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select Admno,Name,Age from school where place in (
+    -> select Admno,Name,Age from school where place in ('chennai');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> select Admno,Name,Age from school where place in ('chennai');
++-------+------+------+
+| Admno | Name | Age  |
++-------+------+------+
+|   106 | Hema |   22 |
++-------+------+------+
+1 row in set (0.00 sec)
+
+mysql> select Admno,Name,Age,place from school where place in ('chennai');
++-------+------+------+---------+
+| Admno | Name | Age  | place   |
++-------+------+------+---------+
+|   106 | Hema |   22 | Chennai |
++-------+------+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select Admno,Name,Age,place from school where age in 18;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '18' at line 1
+mysql> select Admno,Name,Age,place from school where age in (18);
++-------+-------+------+-------+
+| Admno | Name  | Age  | place |
++-------+-------+------+-------+
+|   108 | Ahish |   18 | Delhi |
++-------+-------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> select Admno,Name,Age,place from school where age not in (18);
++-------+---------+------+--------------+
+| Admno | Name    | Age  | place        |
++-------+---------+------+--------------+
+|   100 | Aadhi   |   17 | Salem        |
+|   102 | Balaji  |   12 | Trichy       |
+|   106 | Hema    |   22 | Chennai      |
+|   103 | Dharani |   19 | Salem        |
+|   104 | Dhayya  |   20 | Chengalpattu |
+|   101 | Prakash |   19 | Thoothukudi  |
+|   105 | Melon   |   20 | Salem        |
+|   107 | Ayush   |   14 | Delhi        |
+|   109 | Aisha   |   16 | NewDelhi     |
+|   111 | Kavin   |   36 | Erode        |
++-------+---------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select *from school order by name;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   111 | Kavin   | M      |   36 | Erode        |
+|   105 | Melon   | F      |   20 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select *from school order by name desc;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   111 | Kavin   | M      |   36 | Erode        |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   103 | Dharani | M      |   19 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   100 | Aadhi   | M      |   17 | Salem        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select gender from school group by gender;
++--------+
+| gender |
++--------+
+| M      |
+| F      |
++--------+
+2 rows in set (0.01 sec)
+
+mysql> select gender,count(*) from school group by gender;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| M      |        7 |
+| F      |        4 |
++--------+----------+
+2 rows in set (0.01 sec)
+
+mysql> select gender,count(*) from school group by gender;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| M      |        7 |
+| F      |        4 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete from school where Admno=111;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select gender,count(*) from school group by gender;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| M      |        6 |
+| F      |        4 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select *from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select gender,count(*) from school group by gender;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| M      |        6 |
+| F      |        4 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> quit;
