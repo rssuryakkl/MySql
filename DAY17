@@ -1,0 +1,206 @@
+mysql> #Hii All This is DAY17(05-08-2024) of SQL Learning. Today's topic is HAVING clause.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.07 sec)
+
+mysql> use students;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.01 sec)
+
+mysql> select all place from school;
++--------------+
+| place        |
++--------------+
+| Salem        |
+| Trichy       |
+| Chennai      |
+| Salem        |
+| Chengalpattu |
+| Thoothukudi  |
+| Salem        |
+| Delhi        |
+| Delhi        |
+| NewDelhi     |
++--------------+
+10 rows in set (0.00 sec)
+
+mysql> select age place from school;
++-------+
+| place |
++-------+
+|    17 |
+|    12 |
+|    22 |
+|    19 |
+|    20 |
+|    19 |
+|    20 |
+|    14 |
+|    18 |
+|    16 |
++-------+
+10 rows in set (0.00 sec)
+
+mysql> select Admno,name,age from school where age between 18 and 22;
++-------+---------+------+
+| Admno | name    | age  |
++-------+---------+------+
+|   106 | Hema    |   22 |
+|   103 | Dharani |   19 |
+|   104 | Dhayya  |   20 |
+|   101 | Prakash |   19 |
+|   105 | Melon   |   20 |
+|   108 | Ahish   |   18 |
++-------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select Admno,name,age from school where age not  between 18 and 22;
++-------+--------+------+
+| Admno | name   | age  |
++-------+--------+------+
+|   100 | Aadhi  |   17 |
+|   102 | Balaji |   12 |
+|   107 | Ayush  |   14 |
+|   109 | Aisha  |   16 |
++-------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select Admno,name,age from school where admno=100;
++-------+-------+------+
+| Admno | name  | age  |
++-------+-------+------+
+|   100 | Aadhi |   17 |
++-------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> select *from school order by name;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   105 | Melon   | F      |   20 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select *from school order by age;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   103 | Dharani | M      |   19 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   105 | Melon   | F      |   20 | Salem        |
+|   106 | Hema    | F      |   22 | Chennai      |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select gender from school group by gender;
++--------+
+| gender |
++--------+
+| M      |
+| F      |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select gender,count(*) from school group by gender;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| M      |        6 |
+| F      |        4 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select gender from school group by gender having count(*)>=18;
+Empty set (0.00 sec)
+
+mysql> select gender from school group by gender having count(*)<=18;
++--------+
+| gender |
++--------+
+| M      |
+| F      |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select gender, from school group by gender having count(*)<=18;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from school group by gender having count(*)<=18' at line 1
+mysql> select gender,count(*) from school group by gender having count(*)<=18;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| M      |        6 |
+| F      |        4 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select gender,count(*) from school group by gender having count(*)>=18;
+Empty set (0.00 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
++-------+---------+--------+------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> quit;
