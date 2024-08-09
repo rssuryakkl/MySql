@@ -1,0 +1,101 @@
+mysql> #Hii All This is DAY22(10-08-2024) of SQL Learning. Today's topic is Type of Constraints-Primary Key constrain
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.07 sec)
+
+mysql> use students
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| school             |
+| ss                 |
++--------------------+
+2 rows in set (0.02 sec)
+
+mysql> creatte
+    -> c.;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creatte
+c.' at line 1
+mysql> create table con1(Admno intger not null primary key,Name char not null
+    -> create table con1(Admno intger not null primary key,Name char not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intger not null primary key,Name char not null
+create table con1(Admno intger no' at line 1
+mysql> create table con1(Admno intger not null primary key,Name char not null,Gender char(1),Age integer,Place char(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intger not null primary key,Name char not null,Gender char(1),Age integer,Place ' at line 1
+mysql> create table con1(Admno intger not null primary ,Name char not null,Gender char(1),Age integer,Place char(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intger not null primary ,Name char not null,Gender char(1),Age integer,Place cha' at line 1
+mysql>
+mysql>
+mysql>
+mysql> create table con1(Admno intger not null primarykey ,Name char not null,Gender char(1),Age integer,Place char(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intger not null primarykey ,Name char not null,Gender char(1),Age integer,Place ' at line 1
+mysql> create table con1(Admno intger primary key ,Name char not null,Gender char(1),Age integer,Place char(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intger primary key ,Name char not null,Gender char(1),Age integer,Place char(30)' at line 1
+mysql> create table con1(Admno intger primary key ,Name char not null,Gender char(1),Age integer,Place char(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intger primary key ,Name char not null,Gender char(1),Age integer,Place char(30)' at line 1
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table con1(Admno integer primary key ,Name char not null,Gender char(1),Age integer,Place char(30));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into con1(100,'Asraf
+    '> insert into con1(100,'Asraf;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '100,'Asraf
+insert into con1(100,'Asraf' at line 1
+mysql> insert into con1(100,'Asraf','M',13,'Chennai');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '100,'Asraf','M',13,'Chennai')' at line 1
+mysql> insert into con1 values(100,'Asraf','M',13,'Chennai');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into con1 values(100,'Arif','M',18,'Chennai');
+ERROR 1062 (23000): Duplicate entry '100' for key 'con1.PRIMARY'
+mysql>
+mysql> #so this is a primary key constraint;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from con1;
++-------+------+--------+------+---------+
+| Admno | Name | Gender | Age  | Place   |
++-------+------+--------+------+---------+
+|   100 | A    | M      |   13 | Chennai |
++-------+------+--------+------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into con1 values(100,'Arif','M',18,'Chennai');
+ERROR 1062 (23000): Duplicate entry '100' for key 'con1.PRIMARY'
+mysql> select* from con1;
++-------+------+--------+------+---------+
+| Admno | Name | Gender | Age  | Place   |
++-------+------+--------+------+---------+
+|   100 | A    | M      |   13 | Chennai |
++-------+------+--------+------+---------+
+1 row in set (0.00 sec)
+
+mysql> quit;
+
+
+
+
+
+
+
+
+
