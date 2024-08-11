@@ -1,0 +1,147 @@
+#Hii All This is DAY23(11-08-2024) of SQL Learning. Today's topic is DEFAULT Constraint.
+
+mysql> #Hii All This is DAY23(11-08-2024) of SQL Learning. Today's topic is DEFAULT Constraint.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.04 sec)
+
+mysql> use students;
+Database changed
+mysql>
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| con1               |
+| school             |
+| ss                 |
++--------------------+
+3 rows in set (0.02 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   131 | rs      | M      |   20 | Cochin       |
++-------+---------+--------+------+--------------+
+11 rows in set (0.01 sec)
+
+mysql> select Admno,Name,Age from student where age between 10 and 20;
+ERROR 1146 (42S02): Table 'students.student' doesn't exist
+mysql> select Admno,Name,Age from school where age between 10 and 20;
++-------+---------+------+
+| Admno | Name    | Age  |
++-------+---------+------+
+|   100 | Aadhi   |   17 |
+|   102 | Balaji  |   12 |
+|   103 | Dharani |   19 |
+|   104 | Dhayya  |   20 |
+|   101 | Prakash |   19 |
+|   105 | Melon   |   20 |
+|   107 | Ayush   |   14 |
+|   108 | Ahish   |   18 |
+|   109 | Aisha   |   16 |
+|   131 | rs      |   20 |
++-------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from school order by name;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   105 | Melon   | F      |   20 | Salem        |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   131 | rs      | M      |   20 | Cochin       |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from school order by name desc;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   131 | rs      | M      |   20 | Cochin       |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   103 | Dharani | M      |   19 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   100 | Aadhi   | M      |   17 | Salem        |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> create table std  (Admno integer PRIMARY KEY,Name char (20) NOT NULL,Gender char(1),Age integer DEFAULT 17,Place char(10),);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table std  (Admno integer PRIMARY KEY,Name char (20) NOT NULL,Gender char(1),Age integer DEFAULT 17,Place char(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| con1               |
+| school             |
+| ss                 |
+| std                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from std
+    -> select * from std;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from std' at line 2
+mysql> select * from std;
+Empty set (0.00 sec)
+
+mysql> insert into std values(100,'ISE','M','Chennai');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into std values(100,'ISE','M','','Chennai');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> select * from std;
++-------+------+--------+------+---------+
+| Admno | Name | Gender | Age  | Place   |
++-------+------+--------+------+---------+
+|   100 | ISE  | M      |    0 | Chennai |
++-------+------+--------+------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into std values(100,'ISE','M','16','Chennai');
+ERROR 1062 (23000): Duplicate entry '100' for key 'std.PRIMARY'
+mysql> insert into std values(100,'ISE','M','16','Chennai');
+ERROR 1062 (23000): Duplicate entry '100' for key 'std.PRIMARY'
+mysql> ^C
+mysql> ^C
+mysql>quit;
