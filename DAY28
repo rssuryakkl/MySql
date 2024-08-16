@@ -1,0 +1,158 @@
+mysql> #Hii All This is DAY28(16-08-2024) of SQL Learning. Today's topic is Updations,Deletion.
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| stud               |
+| student            |
+| students           |
+| sys                |
++--------------------+
+7 rows in set (0.03 sec)
+
+mysql> use students
+Database changed
+mysql> select * from students;
+ERROR 1146 (42S02): Table 'students.students' doesn't exist
+mysql> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| con1               |
+| school             |
+| ss                 |
+| std                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Balaji  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Dharani | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   131 | rs      | M      |   20 | Cochin       |
++-------+---------+--------+------+--------------+
+11 rows in set (0.01 sec)
+
+mysql> update name=AAAdhi from school where admno=102;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=AAAdhi from school where admno=102' at line 1
+mysql> update name='AAAdhi' from school where admno=102;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='AAAdhi' from school where admno=102' at line 1
+mysql> update 'Name'='AAAdhi' from school where admno=102;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Name'='AAAdhi' from school where admno=102' at line 1
+mysql>
+mysql>
+mysql>
+mysql> update school'Name'='AAAdhi' where admno=102;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Name'='AAAdhi' where admno=102' at line 1
+mysql> update school 'Name'='AAAdhi' where admno=102;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Name'='AAAdhi' where admno=102' at line 1
+mysql> update school set 'Name'='AAAdhi' where admno=102;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Name'='AAAdhi' where admno=102' at line 1
+mysql> update school set Name='AAAdhi' where admno=102;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update school set Name='Balaji' where admno=103;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | AAAdhi  | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Balaji  | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   131 | rs      | M      |   20 | Cochin       |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> update school set Name='Gopi' where admno=102;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from school;
++-------+---------+--------+------+--------------+
+| AdmNo | Name    | Gender | Age  | Place        |
++-------+---------+--------+------+--------------+
+|   100 | Aadhi   | M      |   17 | Salem        |
+|   102 | Gopi    | M      |   12 | Trichy       |
+|   106 | Hema    | F      |   22 | Chennai      |
+|   103 | Balaji  | M      |   19 | Salem        |
+|   104 | Dhayya  | F      |   20 | Chengalpattu |
+|   101 | Prakash | M      |   19 | Thoothukudi  |
+|   105 | Melon   | F      |   20 | Salem        |
+|   107 | Ayush   | M      |   14 | Delhi        |
+|   108 | Ahish   | M      |   18 | Delhi        |
+|   109 | Aisha   | F      |   16 | NewDelhi     |
+|   131 | rs      | M      |   20 | Cochin       |
++-------+---------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> update school set Name='sellsv',Age=23 where admno=101;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from school;
++-------+--------+--------+------+--------------+
+| AdmNo | Name   | Gender | Age  | Place        |
++-------+--------+--------+------+--------------+
+|   100 | Aadhi  | M      |   17 | Salem        |
+|   102 | Gopi   | M      |   12 | Trichy       |
+|   106 | Hema   | F      |   22 | Chennai      |
+|   103 | Balaji | M      |   19 | Salem        |
+|   104 | Dhayya | F      |   20 | Chengalpattu |
+|   101 | sellsv | M      |   23 | Thoothukudi  |
+|   105 | Melon  | F      |   20 | Salem        |
+|   107 | Ayush  | M      |   14 | Delhi        |
+|   108 | Ahish  | M      |   18 | Delhi        |
+|   109 | Aisha  | F      |   16 | NewDelhi     |
+|   131 | rs     | M      |   20 | Cochin       |
++-------+--------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> update school set Name='R.S T',Age=12 where admno=131;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from school;
++-------+--------+--------+------+--------------+
+| AdmNo | Name   | Gender | Age  | Place        |
++-------+--------+--------+------+--------------+
+|   100 | Aadhi  | M      |   17 | Salem        |
+|   102 | Gopi   | M      |   12 | Trichy       |
+|   106 | Hema   | F      |   22 | Chennai      |
+|   103 | Balaji | M      |   19 | Salem        |
+|   104 | Dhayya | F      |   20 | Chengalpattu |
+|   101 | sellsv | M      |   23 | Thoothukudi  |
+|   105 | Melon  | F      |   20 | Salem        |
+|   107 | Ayush  | M      |   14 | Delhi        |
+|   108 | Ahish  | M      |   18 | Delhi        |
+|   109 | Aisha  | F      |   16 | NewDelhi     |
+|   131 | R.S T  | M      |   12 | Cochin       |
++-------+--------+--------+------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> quit;
